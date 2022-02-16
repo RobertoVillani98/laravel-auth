@@ -6,14 +6,19 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <span class="text-muted">{{$post->created_at}}</span>
+                    <h2>{{ $post->title }}</h2>
                 </div>
 
                 <div class="card-body">
-                    <h4 class="card-title">{{ $post->title }}</h4>
-                    <p class="card-text">
-                        {{ $post->content }}
-                    </p>
+                    <div class="mb-3">
+                        <strong>Stato:</strong>
+                        @if ($post->published)
+                            <span class="badge badge-success">Pubblicato</span>
+                        @else
+                            <span class="badge badge-secondary">Bozza</span>
+                        @endif
+                    </div>
+                    {{ $post->content }}
                 </div>
             </div>
             <a href="{{route('posts.index')}}" class="btn btn-primary mt-4">Torna ai posts</a>
