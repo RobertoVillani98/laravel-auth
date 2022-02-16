@@ -17,6 +17,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Titolo</th>
                             <th scope="col">Slug</th>
+                            <th scope="col">Stato</th>
                             <th scope="col">Azioni</th>
                           </tr>
                         </thead>
@@ -26,6 +27,14 @@
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
                             <td>{{$post->slug}}</td>
+                            <td>
+                                @if ($post->published)
+                                    <span class="badge badge-success">Pubblicato</span>
+                                @else
+                                    <span class="badge badge-secondary">Bozza</span>
+                                @endif
+                            </td>
+
                             <td class="d-flex">
                                 <a href="{{route("posts.show", $post->id)}}"><button type="button" class="btn btn-primary">Visualizza</button></a>
                                 <a class="mx-2" href="{{route('posts.edit', $post->id)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
